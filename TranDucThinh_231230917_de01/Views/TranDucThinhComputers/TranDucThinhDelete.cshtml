@@ -1,0 +1,67 @@
+﻿@model TranDucThinh_231230917_de01.models.TranDucThinhComputer
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0 rounded-3 mx-auto" style="max-width: 700px;">
+        <div class="card-header bg-danger text-white text-center fw-bold fs-4">
+            <i class="bi bi-exclamation-triangle"></i> Xác nhận xóa
+        </div>
+        <div class="card-body bg-light p-4">
+            <h5 class="text-center mb-4 text-danger fw-semibold">
+                Bạn có chắc chắn muốn xóa máy tính này không?
+            </h5>
+
+            <div class="row mb-3">
+                <div class="col-md-4 fw-semibold text-secondary">Tên máy:</div>
+                <div class="col-md-8">@Model.TranDucThinhComName</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4 fw-semibold text-secondary">Giá:</div>
+                <div class="col-md-8 text-danger fw-bold">
+                    @string.Format("{0:N0} VNĐ", Model.TranDucThinhComPrice)
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4 fw-semibold text-secondary">Hình ảnh:</div>
+                <div class="col-md-8">
+                    <img src="@Model.TranDucThinhComImage"
+                         alt="@Model.TranDucThinhComName"
+                         class="img-thumbnail shadow-sm"
+                         style="max-width: 200px; height: auto;" />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4 fw-semibold text-secondary">Trạng thái:</div>
+                <div class="col-md-8">
+                    @if (Model.TranDucThinhComStatus == true)
+                    {
+                        <span class="badge bg-success px-3 py-2">Còn hàng</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger px-3 py-2">Hết hàng</span>
+                    }
+                </div>
+            </div>
+
+            <form asp-action="TranDucThinhDelete" class="mt-4">
+                <input type="hidden" asp-for="TranDucThinhComId" />
+                <div class="d-flex justify-content-between">
+                    <a asp-action="TranDucThinhIndex" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left-circle"></i> Quay lại danh sách
+                    </a>
+                    <button type="submit" class="btn btn-danger px-4"
+                            onclick="return confirm('Bạn chắc chắn muốn xóa sản phẩm này?');">
+                        <i class="bi bi-trash"></i> Xóa
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

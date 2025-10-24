@@ -1,0 +1,59 @@
+﻿@model TranDucThinh_231230917_de01.models.TranDucThinhComputer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Thêm máy tính mới</h2>
+    <hr />
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+            <form asp-action="TranDucThinhCreate" class="shadow p-4 rounded bg-light">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="TranDucThinhComId" class="form-label fw-bold"></label>
+                    <input asp-for="TranDucThinhComId" class="form-control" placeholder="Nhập mã máy tính" />
+                    <span asp-validation-for="TranDucThinhComId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TranDucThinhComName" class="form-label fw-bold"></label>
+                    <input asp-for="TranDucThinhComName" class="form-control" placeholder="Nhập tên máy tính" />
+                    <span asp-validation-for="TranDucThinhComName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TranDucThinhComPrice" class="form-label fw-bold"></label>
+                    <input asp-for="TranDucThinhComPrice" class="form-control" placeholder="Nhập giá" />
+                    <span asp-validation-for="TranDucThinhComPrice" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TranDucThinhComImage" class="form-label fw-bold"></label>
+                    <input asp-for="TranDucThinhComImage" class="form-control" placeholder="Nhập đường dẫn ảnh" />
+                    <span asp-validation-for="TranDucThinhComImage" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TranDucThinhComStatus" class="form-label fw-bold"></label>
+                    <input asp-for="TranDucThinhComStatus" class="form-control" placeholder="Nhập trạng thái (true/false)" />
+                    <span asp-validation-for="TranDucThinhComStatus" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="TranDucThinhIndex" class="btn btn-secondary w-50 me-2">← Quay lại</a>
+                    <button type="submit" class="btn btn-primary w-50 ms-2">Thêm mới</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

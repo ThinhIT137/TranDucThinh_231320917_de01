@@ -1,0 +1,69 @@
+﻿@model TranDucThinh_231230917_de01.models.TranDucThinhComputer
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center fw-bold text-primary mb-4">Chỉnh sửa thông tin máy tính</h2>
+    <hr />
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <form asp-action="TranDucThinhEdit" class="p-4 border rounded shadow-sm bg-light">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <input type="hidden" asp-for="TranDucThinhComId" />
+
+                <div class="mb-3">
+                    <label asp-for="TranDucThinhComName" class="form-label fw-semibold"></label>
+                    <input asp-for="TranDucThinhComName" class="form-control" placeholder="Nhập tên máy tính..." />
+                    <span asp-validation-for="TranDucThinhComName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TranDucThinhComPrice" class="form-label fw-semibold"></label>
+                    <input asp-for="TranDucThinhComPrice" class="form-control" placeholder="Nhập giá (VNĐ)..." />
+                    <span asp-validation-for="TranDucThinhComPrice" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TranDucThinhComImage" class="form-label fw-semibold"></label>
+                    <input asp-for="TranDucThinhComImage" class="form-control" placeholder="Nhập link ảnh hoặc tải ảnh lên..." />
+                    <span asp-validation-for="TranDucThinhComImage" class="text-danger"></span>
+
+                    @* Hiển thị ảnh xem trước *@
+                    @if (!string.IsNullOrEmpty(Model.TranDucThinhComImage))
+                    {
+                        <div class="text-center mt-3">
+                            <img src="@Model.TranDucThinhComImage" alt="Preview" class="img-thumbnail shadow-sm" style="max-width:150px; height:auto;" />
+                        </div>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TranDucThinhComStatus" class="form-label fw-semibold"></label>
+                    <select asp-for="TranDucThinhComStatus" class="form-select">
+                        <option value="true">Còn hàng</option>
+                        <option value="false">Hết hàng</option>
+                    </select>
+                    <span asp-validation-for="TranDucThinhComStatus" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a class="btn btn-secondary" asp-action="TranDucThinhIndex">
+                        <i class="bi bi-arrow-left-circle"></i> Back to List
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
